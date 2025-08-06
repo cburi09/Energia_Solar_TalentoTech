@@ -1,0 +1,87 @@
+/*Estilo global de la pagina, letra y fondo de la misma.*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightblue;
+}
+
+/*Se agrega padding si se está visualizando desde una tablet o móvil para que el contenido no quede pegado al borde del display*/
+@media only screen and (max-device-width: 1366px) {
+    body{
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+}
+
+/*Barra de navegación*/
+.navbar {
+    overflow: hidden;
+    background-color: green;
+    width: max-content;
+    border-radius: 10px;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover{
+  background-color: skyblue;
+    color: black;
+}
+
+
+ul {
+    margin: 0;
+}
+
+/*Pie de pagina*/
+footer {
+    text-align: center;
+    padding: 10%;
+    background-color: rgb(36, 36, 114);
+    color: white;
+}
+
+/*clase titulo, solo se usa en el Header*/
+.titulo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    padding-left: 2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+
+/*Se declara la clase centrado para centrar cualquier titulo o texto que se vea mejoir así (dependiendo la distribución de contenido)*/
+.centrado{
+    text-align: center;
+}
+
+/*clase container, para repartir todos los elementos de manera uniforme en el eje horizontal en pantallas grandes*/
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/*Excepción para que el container distribuya todo en vertical si se ve desde una pantalla de menos de 1366 pixeles de ancho*/
+@media only screen and (max-device-width: 1366px) {
+    .container{
+        flex-direction: column;
+    }
+}
+
+/*Se agrega padding a cada elemento del container para mayor claridad y diferenciación entre textos*/
+.elemento_container{
+    padding: 10px;
+}
+
+
+
+
+

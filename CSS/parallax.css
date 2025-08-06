@@ -1,0 +1,34 @@
+.parallax1 {
+  /*Imagen a usar en el fondo estilo Parallax*/
+  background-image: url("../recursos/vecteezy_solar-panel-on-dramatic-sunset-sky-background-alternative_4876634.jpg");
+
+  /*Altura del contenedor de la imagen de fondo*/
+  height: 40vh;
+
+  /*Efecto de desplazamiento*/
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax2 {
+  /*Imagen a usar en el fondo estilo Parallax*/
+  background-image: url("../recursos/vecteezy_drone-aerial-view-of-solar-panels-system-power-generators_39376059.jpg");
+
+  /*Altura del contenedor de la imagen de fondo*/
+  height: 40vh;
+
+  /*Efecto de desplazamiento*/
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ /*Detener efecto Parallax para tablets y celulares. Ajustar max-device-width de ser necesario */
+@media only screen and (max-device-width: 1366px) {
+  .parallax1, .parallax2 {
+    background-attachment: scroll;
+  }
+} 
