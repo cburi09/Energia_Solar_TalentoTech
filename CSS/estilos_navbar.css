@@ -18,10 +18,12 @@ body {
     background-color: green;
     width: max-content;
     border-radius: 10px;
+    display: flex;
 }
 
 .navbar a {
     float: left;
+    /*font-size: 3vh;*/
     font-size: 16px;
     color: white;
     text-align: center;
@@ -30,7 +32,7 @@ body {
 }
 
 .navbar a:hover{
-  background-color: skyblue;
+    background-color: skyblue;
     color: black;
 }
 
@@ -39,12 +41,20 @@ ul {
     margin: 0;
 }
 
+blockquote p {
+    font-style: italic;
+}
+
 /*Pie de pagina*/
 footer {
     text-align: center;
-    padding: 10%;
-    background-color: rgb(36, 36, 114);
+    background-color: rgba(0, 0, 255, 0.264);
     color: white;
+}
+
+footer p {
+    font-size: 2vh;
+    padding: 0vw 1vh;
 }
 
 /*clase titulo, solo se usa en el Header*/
@@ -62,26 +72,46 @@ footer {
     text-align: center;
 }
 
+.justificado_izquierda{
+    text-align: left;
+}
+
 /*clase container, para repartir todos los elementos de manera uniforme en el eje horizontal en pantallas grandes*/
 .container {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
+    /*flex-wrap: wrap;*/
 }
 
 /*Excepción para que el container distribuya todo en vertical si se ve desde una pantalla de menos de 1366 pixeles de ancho*/
 @media only screen and (max-device-width: 1366px) {
     .container{
         flex-direction: column;
+        align-items: center;
     }
 }
 
 /*Se agrega padding a cada elemento del container para mayor claridad y diferenciación entre textos*/
 .elemento_container{
-    padding: 10px;
+    padding: 1vh 1vw;
 }
 
+.boton_transparente{
+    background-color: transparent;
+    border-color: transparent;
+}
 
+.footer_copyright {
+    text-align: left;
+    background-color: rgb(0, 0, 144);
+    color: white;
+}
 
-
-
+.place_holder_dashboard {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:80%;
+}
