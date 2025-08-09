@@ -1,43 +1,109 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./CSS/parallax.css">
-    <link rel="stylesheet" href="./CSS/estilos_navbar.css">
-    <title>Energía Solar en Colombia ☀</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Solar con Mapa</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+  h1 { text-align: center; }
+  .container { background: #fff; padding: 20px; border-radius: 10px; max-width: 800px; margin: auto; }
+  label { display: block; margin-top: 10px; }
+  input, select, button { width: 100%; padding: 8px; margin-top: 5px; }
+  #map { height: 400px; margin-top: 20px; border-radius: 10px; }
+  .resultado { background: #e3f2fd; padding: 10px; margin-top: 15px; border-radius: 8px; }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
-    <!--Se define el encabezado de la pagina de clase Titulo, para poder distribuir y centrar los dos elementos que pertenecen a él indiferente del dispositivo donde se vea-->
-    <header class="titulo">
-        <h1>Energía Solar en Colombia</h1>
-        <img src="./recursos/Icono_panel_solar_mini.png" alt="panel solar mini">
-    </header>
-    <br>
-    <!---->
-    <div class="navbar">
-    <a href="PaginaPrincipal.html">Pagina de inicio</a>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="calculadora.html">Calculadora</a>
-    </div>
+<div class="container">
+<h1>Calculadora — Proyecto de Energía Solar con Mapa</h1>
 
-    <footer>
-        <div class="container">
-            <div class="elemento_container">
-                <h3>Proyecto final para TalentoTech.</h3>
-                <p>Esta es una pagina web estatica, presentada como proyecto final del curso Programación Nivel Explorador, del programa TalentoTech</p>
-                <p>Realizado por: Laura Stella Valero Cruz,Juan Camilo Buritica Vera, Daniel José Muños</p>
-            </div>
-            <div class="elemento_container">
-                <button class="boton_transparente"><a href="https://es.vecteezy.com/fotos-gratis/solar">Fotos usadas para el fondo: Solar Fotos de Stock por Vecteezy</a></button>
-            </div>
-            <div class="elemento_container">
-                <button class="boton_transparente"><a href="#top">Volver a la parte superior de la pagina</a></button>
-            </div>
-        </div>
-        <footer class="footer_copyright">
-        <p>©2025 grupo TechProject. Algunos derechos reservados.</p>
-        <p></p>
-        </footer>
-    </footer>
+<label for="ciudad">Seleccione ciudad:</label>
+<select id="ciudad">
+  <option value="">-- Seleccionar --</option>
+  <option value="Bogotá" data-psh="4.5">Bogotá</option>
+  <option value="Medellín" data-psh="5.0">Medellín</option>
+  <option value="Cali" data-psh="5.5">Cali</option>
+  <option value="Barranquilla" data-psh="5.8">Barranquilla</option>
+  <option value="Cartagena" data-psh="5.9">Cartagena</option>
+  <option value="Bucaramanga" data-psh="5.4">Bucaramanga</option>
+  <option value="Pasto" data-psh="4.8">Pasto</option>
+  <option value="Villavicencio" data-psh="5.3">Villavicencio</option>
+</select>
+
+<label for="consumo">Consumo mensual (kWh):</label>
+<input type="number" id="consumo" placeholder="Ej. 300">
+
+<label for="perdidas">Pérdidas del sistema (%):</label>
+<input type="number" id="perdidas" value="15">
+
+<label for="potenciaPanel">Potencia de cada panel (W):</label>
+<input type="number" id="potenciaPanel" value="450">
+
+<button onclick="calcular()">Calcular</button>
+
+<div id="resultados" class="resultado"></div>
+
+<h2>Mapa de irradiación</h2>
+<div id="map"></div>
+</div>
+
+<script>
+// Inicializar mapa Leaflet centrado en Colombia
+var map = L.map('map').setView([4.5709, -74.2973], 5);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+// Marcadores de ciudades
+var ciudades = {
+  "Bogotá": { coords: [4.711, -74.072], psh: 4.5 },
+  "Medellín": { coords: [6.251, -75.563], psh: 5.0 },
+  "Cali": { coords: [3.451, -76.532], psh: 5.5 },
+  "Barranquilla": { coords: [10.963, -74.796], psh: 5.8 },
+  "Cartagena": { coords: [10.391, -75.479], psh: 5.9 },
+  "Bucaramanga": { coords: [7.119, -73.122], psh: 5.4 },
+  "Pasto": { coords: [1.214, -77.278], psh: 4.8 },
+  "Villavicencio": { coords: [4.142, -73.626], psh: 5.3 }
+};
+
+for (var ciudad in ciudades) {
+  let info = ciudades[ciudad];
+  L.marker(info.coords).addTo(map)
+    .bindPopup(`<b>${ciudad}</b><br>PSH promedio: ${info.psh} h/día`)
+    .on('click', () => {
+      document.getElementById('ciudad').value = ciudad;
+    });
+}
+
+function calcular() {
+  let ciudadSel = document.getElementById('ciudad');
+  let psh = parseFloat(ciudadSel.options[ciudadSel.selectedIndex].dataset.psh);
+  let consumo = parseFloat(document.getElementById('consumo').value);
+  let perdidas = parseFloat(document.getElementById('perdidas').value) / 100;
+  let potenciaPanel = parseFloat(document.getElementById('potenciaPanel').value);
+
+  if (!consumo || !psh) {
+    alert('Por favor, ingrese el consumo y seleccione una ciudad.');
+    return;
+  }
+
+  let kWdia = consumo / 30;
+  let kWrequerido = kWdia / psh;
+  let kWajustado = kWrequerido / (1 - perdidas);
+  let Wtotal = kWajustado * 1000;
+  let numPaneles = Math.ceil(Wtotal / potenciaPanel);
+
+  document.getElementById('resultados').innerHTML = `
+    <b>Resultados para ${ciudadSel.value}</b><br>
+    Potencia necesaria: ${kWajustado.toFixed(2)} kW<br>
+    Número de paneles (${potenciaPanel}W): ${numPaneles}
+  `;
+}
+</script>
 </body>
 </html>
+```
