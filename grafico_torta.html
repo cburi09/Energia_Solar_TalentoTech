@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./CSS/parallax.css">
+    <link rel="stylesheet" href="./CSS/graficos.css">
     <link rel="stylesheet" href="./CSS/estilos_navbar.css">
     <title>Energía Solar en Colombia ☀</title>
 </head>
@@ -19,37 +19,13 @@
     <a href="dashboard.html">Dashboard</a>
     <a href="calculadora.html">Calculadora</a>
     </div>
+    <br>
+    
     <div class="container">
-        <a href="barras">
-            <div >
-                <h3 class="centrado">Gráfico de barras</h3>
-                <img src="./recursos/grafico-barras-verticales.jpg" class="place_holder_dashboard" alt="Norway">
-            </div>
-        </a>
-        <a href="grafico_torta.html">
-            <div >
-                <h3 class="centrado">Gráfico de torta</h3>
-                <img src="./recursos/grafico-barras-verticales.jpg" class="place_holder_dashboard" alt="Norway">
-            </div>
-        </a>
+        <div id="grafico_torta"></div>
     </div>
-    <br><br>
-    <div class="container">
-        <a href="lineas">
-            <div >
-                <h3 class="centrado">Gráfico de líneas</h3>
-                <img src="./recursos/grafico-barras-verticales.jpg" class="place_holder_dashboard" alt="Norway">
-            </div>
-        </a>
-        <a href="area">
-            <div >
-                <h3 class="centrado">Gráfico de área</h3>
-                <img src="./recursos/grafico-barras-verticales.jpg" class="place_holder_dashboard" alt="Norway">
-            </div>
-        </a>
-    </div>
-
-    <br><br>
+    <p>En el gráfico se decidió omitir la energía Hidrica ya que esta representa casi el 95% de la produción anual de energías renovables del país.</p>
+    <br>
 
     <footer>
         <div class="container">
@@ -69,6 +45,8 @@
         <p>©2025 grupo TechProject. Algunos derechos reservados.</p>
         </footer>
     </footer>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="module" src="./Javascript/grafico_torta.js" async></script>
     
 </body>
 </html>
