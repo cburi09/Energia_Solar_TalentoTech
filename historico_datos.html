@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./CSS/parallax.css">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, target-densitydpi=device-dpi">
+    <link rel="stylesheet" href="./CSS/graficos.css">
     <link rel="stylesheet" href="./CSS/estilos_navbar.css">
     <title>Energía Solar en Colombia ☀</title>
 </head>
@@ -16,41 +16,29 @@
     <!---->
     <div class="navbar">
     <a href="PaginaPrincipal.html">Pagina de inicio</a>
-    <a>Dashboard</a>
+    <a href="dashboard.html">Dashboard</a>
     <a href="calculadora.html">Calculadora</a>
     </div>
-    <div class="container">
-        <a href="grafico_barras.html">
-            <div >
-                <h3 class="centrado">Gráfico de barras</h3>
-                <img src="./recursos/diagrama_barras_verticales_placeholder.png" class="place_holder_dashboard" alt="Norway">
-            </div>
-        </a>
-        <a href="grafico_torta.html">
-            <div >
-                <h3 class="centrado">Gráfico de torta</h3>
-                <img src="./recursos/diagrama_circular_placeholder.png" class="place_holder_dashboard" alt="Norway">
-            </div>
-        </a>
-    </div>
-    <br><br>
-    <div class="container">
-        <a href="grafico_lineas.html">
-            <div >
-                <h3 class="centrado">Gráfico de líneas</h3>
-                <img src="./recursos/diagrama_lineas_placeholder.png" class="place_holder_dashboard" alt="Norway">
-            </div>
-        </a>
-        <a href="grafico_area.html">
-            <div >
-                <h3 class="centrado">Gráfico de área</h3>
-                <img src="./recursos/diagrama_area_placeholder.png" class="place_holder_dashboard" alt="Norway">
-            </div>
-        </a>
-    </div>
-    <p class="centrado">Para revisar la tabla con el historico completo de datos, haga clic <a href="historico_datos.html">aqui</a>
-    <br><br>
+    <br>
 
+    <!--Contenedor para la tabla con los datos del documento CSV-->
+    <div class="container">
+        <table id="tabla_historico">
+            <thead>
+                <th>Entity</th>
+                <th>Code</th>
+                <th>Year</th>
+                <th>Geo Biomass Other - TWh</th>
+                <th>Solar Generation - TWh</th>
+                <th>Wind Generation - TWh</th>
+                <th>Hydro Generation - TWh</th>
+            </thead>
+            <tbody>
+                <!--Cuerpo de la tabla, donde se ponen los datos desde el archivo-->
+            </tbody>
+        </table>
+    </div>
+    <br>
     <footer>
         <div class="container">
             <div class="elemento_container">
@@ -69,6 +57,8 @@
         <p>©2025 grupo TechProject. Algunos derechos reservados.</p>
         </footer>
     </footer>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="module" src="./Javascript/historico_datos.js" async></script>
     
 </body>
 </html>

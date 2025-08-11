@@ -69,6 +69,7 @@ footer p {
 
 /*Se declara la clase centrado para centrar cualquier titulo o texto que se vea mejoir así (dependiendo la distribución de contenido)*/
 .centrado{
+    align-items: center;
     text-align: center;
 }
 
