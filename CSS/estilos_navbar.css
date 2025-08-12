@@ -41,6 +41,7 @@ ul {
     margin: 0;
 }
 
+/*Todo lo que vaya en un bloque citado estará en cursiva*/
 blockquote p {
     font-style: italic;
 }
@@ -67,7 +68,7 @@ footer p {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
 }
 
-/*Se declara la clase centrado para centrar cualquier titulo o texto que se vea mejoir así (dependiendo la distribución de contenido)*/
+/*Se declara la clase centrado para centrar cualquier titulo o texto que se vea mejor así (dependiendo la distribución de contenido)*/
 .centrado{
     align-items: center;
     text-align: center;

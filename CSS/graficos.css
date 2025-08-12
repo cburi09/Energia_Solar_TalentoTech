@@ -1,3 +1,4 @@
+/*Contenedores para los gráficos*/
 #grafico_torta {
     width: 80vw;
     height: 70vh;
@@ -11,7 +12,7 @@
 }
 
 #grafico_barras text{
-    fill: black !important
+    fill: black !important /*Se agrega ya que la librería de Google no contiene ningún método para cambiar el color de los subtitulos en este tipo de gráficos*/
 }
 
 #grafico_lineas {
@@ -26,6 +27,8 @@
     background-color: transparent;
 }
 
+
+/*Estilos para la tabla con los datos del archivo CSV*/
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -33,7 +36,7 @@ table {
 }
 
 thead th {
-    position: sticky;
+    position: sticky; /*Se agrega esta etiqueta para que la primera fila de la tabla sea siempre visible mientras se baja a ver el contenido de la misma*/
     top: 0vh;
     background-color: #dddddd
 }

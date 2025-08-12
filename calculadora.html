@@ -11,7 +11,7 @@
 
     <!-- Encabezado -->
     <header class="titulo">
-        <h1>Proyecto Energía Solar en Colombia</h1>
+        <h1>Energía Solar en Colombia</h1>
         <img src="./recursos/Icono_panel_solar_mini.png" alt="panel solar mini">
     </header>
     <br>
@@ -106,26 +106,7 @@
     </footer>
 
     <!-- Script calculadora -->
-    <script>
-    function calcular() {
-        let irradiacion = parseFloat(document.getElementById('ciudad').value);
-        let potencia = parseFloat(document.getElementById('potencia').value) / 1000; // W a kW
-        let eficiencia = parseFloat(document.getElementById('eficiencia').value) / 100;
-        let costo = parseFloat(document.getElementById('costo').value);
-
-        if (isNaN(potencia) || isNaN(eficiencia) || isNaN(costo)) {
-            document.getElementById('resultado').innerHTML = "⚠️ Por favor completa todos los campos.";
-            return;
-        }
-
-        let energiaAnual = irradiacion * potencia * eficiencia * 365; // kWh/año
-        let ahorroAnual = energiaAnual * costo;
-
-        document.getElementById('resultado').innerHTML = 
-            `☀️ Energía generada al año: ${energiaAnual.toFixed(2)} kWh<br>` + 
-            `💰 Ahorro estimado al año: $${ahorroAnual.toLocaleString('es-CO')}`;
-    }
-    </script>
+    <script type="text/javascript" src="./Javascript/calculadora.js"></script>
 
 </body>
 </html>

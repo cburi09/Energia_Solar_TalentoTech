@@ -11,7 +11,7 @@ async function drawChart() {
 
     let arreglo_datos = [['Año', 'GWh E. Solar', 'GWh E. Eólica']];
 
-    //Se itera desde el año 2000 (posición 34) hasta el 2021
+    //Se itera desde el año 2000 (posición 34) hasta el 2021 agregando los datos que se desea mostrar
     for(let i=34; i<=55; i++){
         let registro = CSV[i].split(",");
         let dato_a_imprimir = [registro[2], parseFloat(registro[4])*1000, parseFloat(registro[5])*1000];
